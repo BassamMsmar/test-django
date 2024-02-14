@@ -2,17 +2,31 @@
 {% block content %}
 
 
-{% for student in students %}
-<div class="container m-5">
-    <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Name : {{student.first_name}} {{student.second_name}}</li>
-            <li class="list-group-item">Phone : {{student.phone}}</li>
-            <li class="list-group-item">Age : {{student.age}}</li>
-        </ul>
+<div class="row ">
+    {% for student in students %}
+    <div class="col-9 bg-light">
+        <div class="container m-5">
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name : {{student.first_name}} {{student.second_name}}</li>
+                    <li class="list-group-item">Phone : {{student.phone}}</li>
+                    <li class="list-group-item">Age : {{student.age}}</li>
+                    <li class="list-group-item"><button type="button" class="btn btn-secondary text-decoration-none"><a href="{% url 'detail_student' pk=student.pk %}">Detail</a></button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="col-3">
+        <h1>Historical Records</h1>
+        <!-- <ul>
+            {% for record in historical_records %}
+            <li>{{ record }}</li>
+            {% endfor %}
+        </ul> -->
     </div>
 </div>
-{% endfor %}
+
 
 
 {% endblock %}
